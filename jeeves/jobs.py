@@ -67,6 +67,12 @@ def get_jenkins_job_info(server, job_name, filter_param_name=None, filter_param_
 						break
 				if filter_param_name is not None:
 					api_param_value = [param['value'] for param in build_parameters if filter_param_name == param.get('name', '')][0]
+					if (api_param_value == "true"):
+						if (filter_param_value == True):
+							break
+					if (api_param_value == "false"):
+						if (filter_param_value == False):
+							break
 					if api_param_value == filter_param_value:
 						break
 				if build_info['previousBuild'] is None:
